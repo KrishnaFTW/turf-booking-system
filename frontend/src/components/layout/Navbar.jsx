@@ -1,23 +1,37 @@
 import { Link } from "react-router-dom";
 
+import Button from "../ui/Button";
+import Container from "./Container";
+
 function Navbar() {
   return (
-    <nav className="flex justify-between items-center px-10 py-5 shadow-md bg-white">
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
+      <Container>
+        <div className="flex justify-between items-center h-20">
+          <h1 className="text-3xl font-bold text-green-600">
+            TurfEase
+          </h1>
 
-      <h1 className="text-2xl font-bold text-green-600">
-        TurfEase
-      </h1>
+          <div className="flex items-center gap-8">
+            <Link to="/">Home</Link>
+            <Link to="/">Sports</Link>
+            <Link to="/">Pricing</Link>
+            <Link to="/">Contact</Link>
 
-      <div className="flex gap-8">
+            <Link to="/login">
+              Login
+            </Link>
 
-        <Link to="/">Home</Link>
+            <Link to="/register">
+              <Button>
 
-        <Link to="/login">Login</Link>
+                Book Now
 
-        <Link to="/register">Register</Link>
-
-      </div>
-
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Container>
     </nav>
   );
 }

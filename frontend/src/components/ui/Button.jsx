@@ -1,18 +1,66 @@
 function Button({
-  children,
-  onClick,
-  className = "",
-  type = "button",
+
+    children,
+
+    variant = "primary",
+
+    type = "button",
+
+    className = "",
+
+    ...props
+
 }) {
-  return (
-    <button
-      type={type}
-      onClick={onClick}
-      className={`bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition duration-300 ${className}`}
-    >
-      {children}
-    </button>
-  );
+
+    const styles = {
+
+        primary:
+            "bg-green-600 hover:bg-green-700 text-white",
+
+        secondary:
+            "bg-blue-600 hover:bg-blue-700 text-white",
+
+        outline:
+            "border border-green-600 text-green-600 hover:bg-green-600 hover:text-white",
+
+    };
+
+    return (
+
+        <button
+
+            type={type}
+
+            className={`
+
+                px-6
+
+                py-3
+
+                rounded-xl
+
+                font-semibold
+
+                transition-all
+
+                duration-300
+
+                ${styles[variant]}
+
+                ${className}
+
+            `}
+
+            {...props}
+
+        >
+
+            {children}
+
+        </button>
+
+    );
+
 }
 
 export default Button;
