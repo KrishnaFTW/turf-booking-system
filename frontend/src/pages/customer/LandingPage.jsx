@@ -1,13 +1,14 @@
-import Navbar from "../../components/layout/Navbar";
+import MainLayout from "../../components/layout/MainLayout";
+
 import HeroSection from "../../components/common/HeroSection";
+
 import SportsSection from "../../components/common/SportsSection";
+
 import FeaturesSection from "../../components/common/FeaturesSection";
-import Footer from "../../components/layout/Footer";
 
 function LandingPage() {
   return (
-    <>
-      <Navbar />
+    <MainLayout>
 
       <HeroSection />
 
@@ -15,8 +16,7 @@ function LandingPage() {
 
       <FeaturesSection />
 
-      <Footer />
-    </>
+    </MainLayout>
   );
 }
 
