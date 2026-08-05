@@ -1,20 +1,32 @@
+import Container from "../layout/Container";
+import HeroButtons from "./HeroButtons";
+import HeroContent from "./HeroContent";
+import HeroStats from "./HeroStats";
+import heroImage from "../../assets/images/turf-image.jpg";
+
 function HeroSection() {
   return (
-    <section className="text-center py-28 bg-green-50">
+    <section
+    className="relative min-h-[90vh] flex items-center bg-cover bg-center"
+    style={{
+        backgroundImage: `url(${heroImage})`,
+    }}
+>
+  <div className="absolute inset-0 bg-black/60"></div>
 
-      <h1 className="text-6xl font-bold text-green-700">
-        Book Your Turf Online
-      </h1>
+      <Container>
 
-      <p className="mt-6 text-xl text-gray-600">
-        Cricket & Football Turf Booking Made Easy
-      </p>
+    <div className="relative z-10">
 
-      <button
-        className="mt-8 bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700"
-      >
-        Book Now
-      </button>
+        <HeroContent />
+
+        <HeroButtons />
+
+        <HeroStats />
+
+    </div>
+
+</Container>
 
     </section>
   );
