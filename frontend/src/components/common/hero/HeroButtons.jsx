@@ -1,15 +1,15 @@
-import Button from "../ui/Button";
+import Button from "@/components/ui/Button";
 
 function HeroButtons() {
   return (
     <div className="mt-10 flex flex-wrap gap-5">
 
       <Button>
-        Book Now
+        Book a Slot
       </Button>
 
       <Button variant="outline">
-        View Slots
+        Today's Availability
       </Button>
 
     </div>

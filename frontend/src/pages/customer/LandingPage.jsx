@@ -1,6 +1,6 @@
-import MainLayout from "../../components/layout/MainLayout";
+import MainLayout from "@/components/layout/MainLayout";
 
-import HeroSection from "../../components/common/HeroSection";
+import HeroSection from "@/components/common/hero/HeroSection";
 
 import SportsSection from "../../components/common/SportsSection";
 

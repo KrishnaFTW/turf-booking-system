@@ -1,8 +1,10 @@
-import Container from "../layout/Container";
+import Container from "@/components/layout/Container";
+
+import HeroImage from "./HeroImage";
 import HeroButtons from "./HeroButtons";
 import HeroContent from "./HeroContent";
 import HeroStats from "./HeroStats";
-import heroImage from "../../assets/images/turf-image.jpg";
+import heroImage from "@/assets/images/turf-image.jpg";
 
 function HeroSection() {
   return (
@@ -16,7 +18,9 @@ function HeroSection() {
 
       <Container>
 
-    <div className="relative z-10">
+    <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+
+    <div>
 
         <HeroContent />
 
@@ -25,6 +29,10 @@ function HeroSection() {
         <HeroStats />
 
     </div>
+
+    <HeroImage />
+
+</div>
 
 </Container>
 
