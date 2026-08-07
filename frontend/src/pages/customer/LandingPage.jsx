@@ -6,17 +6,21 @@ import SportsSection from "../../components/common/SportsSection";
 
 import FeaturesSection from "../../components/common/FeaturesSection";
 
+import LiveSlotSection from "@/components/common/LiveSlotSection";
+
 function LandingPage() {
   return (
-    <MainLayout>
+<MainLayout>
 
-      <HeroSection />
+    <HeroSection />
 
-      <SportsSection />
+    <LiveSlotSection />
 
-      <FeaturesSection />
+    <SportsSection />
 
-    </MainLayout>
+    <FeaturesSection />
+
+</MainLayout>
   );
 }
 
