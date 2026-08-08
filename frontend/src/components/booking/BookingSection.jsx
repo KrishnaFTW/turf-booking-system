@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BookingSummary from "./BookingSummary";
 
 import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
@@ -11,9 +12,8 @@ import SlotList from "./SlotList";
 
 function BookingSection() {
     const [selectedSport, setSelectedSport] = useState("Cricket");
-
-const [selectedDate, setSelectedDate] = useState(new Date());
-
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedSlot, setSelectedSlot] = useState(null);
     return (
 
         <section className="py-20">
@@ -29,31 +29,33 @@ const [selectedDate, setSelectedDate] = useState(new Date());
                 />
 
                 <DateSelector
-    selectedDate={selectedDate}
-    setSelectedDate={setSelectedDate}
+                    selectedDate={selectedDate}
+                    setSelectedDate={setSelectedDate}
                 />
 
                 <SportSelector
-    selectedSport={selectedSport}
-    setSelectedSport={setSelectedSport}
-/>
-            <div className="mt-8 p-4 bg-green-50 rounded-xl">
-  <p>
-    <strong>Selected Sport:</strong> {selectedSport}
-  </p>
+                    selectedSport={selectedSport}
+                    setSelectedSport={setSelectedSport}
+                />
+                <div className="mt-8 p-4 bg-green-50 rounded-xl">
+                    <p>
+                        <strong>Selected Sport:</strong> {selectedSport}
+                    </p>
 
-  <p>
-    <strong>Selected Date:</strong>{" "}
-    {selectedDate.toDateString()}
-  </p>
-</div>
+                    <p>
+                        <strong>Selected Date:</strong>{" "}
+                        {selectedDate.toDateString()}
+                    </p>
+                </div>
 
                 <div className="mt-10">
 
                     <SlotList
-  selectedDate={selectedDate}
-  selectedSport={selectedSport}
-/>
+                        selectedDate={selectedDate}
+                        selectedSport={selectedSport}
+                        onSelectSlot={setSelectedSlot}
+                    />
+                    <BookingSummary slot={selectedSlot} />
 
                 </div>
 

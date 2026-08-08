@@ -2,7 +2,7 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import SlotStatusBadge from "./SlotStatusBadge";
 
-function SlotCard({ slot }) {
+function SlotCard({ slot, onSelectSlot }) {
 
   return (
 
@@ -44,10 +44,10 @@ function SlotCard({ slot }) {
 
         {slot.status === "AVAILABLE" ? (
 
-          <Button>
-
+          <Button
+            onClick={() => onSelectSlot(slot)}
+          >
             Book
-
           </Button>
 
         ) : (

@@ -9,7 +9,7 @@ function getDateKey(date) {
   return `${year}-${month}-${day}`;
 }
 
-function SlotList({ selectedDate, selectedSport }) {
+function SlotList({ selectedDate, selectedSport, onSelectSlot }) {
   const selectedDateKey = getDateKey(selectedDate);
 
   const filteredSlots = slots.filter((slot) => {
@@ -35,6 +35,7 @@ function SlotList({ selectedDate, selectedSport }) {
         <SlotCard
           key={slot.id}
           slot={slot}
+          onSelectSlot={onSelectSlot}
         />
       ))}
     </div>
