@@ -8,13 +8,15 @@ import FeaturesSection from "../../components/common/FeaturesSection";
 
 import LiveSlotSection from "@/components/common/LiveSlotSection";
 
+import BookingSection from "@/components/booking/BookingSection";
+
 function LandingPage() {
   return (
 <MainLayout>
 
     <HeroSection />
 
-    <LiveSlotSection />
+    <BookingSection />
 
     <SportsSection />
 
