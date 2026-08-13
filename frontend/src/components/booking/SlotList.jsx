@@ -35,6 +35,7 @@ function SlotList({ selectedDate, selectedSport, onSelectSlot }) {
         <SlotCard
           key={slot.id}
           slot={slot}
+          selectedDate={selectedDate}
           onSelectSlot={onSelectSlot}
         />
       ))}

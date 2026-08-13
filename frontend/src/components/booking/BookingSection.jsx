@@ -14,6 +14,16 @@ function BookingSection() {
     const [selectedSport, setSelectedSport] = useState("Cricket");
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedSlot, setSelectedSlot] = useState(null);
+    const [customerDetails, setCustomerDetails] = useState(null);
+
+    const handleBookingSubmit = (formData) => {
+        setCustomerDetails(formData);
+
+        console.log("Booking Data:", {
+            slot: selectedSlot,
+            customer: formData,
+        });
+    };
     return (
 
         <section className="py-20">
@@ -55,7 +65,10 @@ function BookingSection() {
                         selectedSport={selectedSport}
                         onSelectSlot={setSelectedSlot}
                     />
-                    <BookingSummary slot={selectedSlot} />
+                    <BookingSummary
+                        slot={selectedSlot}
+                        onBookingSubmit={handleBookingSubmit}
+                    />
 
                 </div>
 

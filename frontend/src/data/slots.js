@@ -13,42 +13,50 @@ const generateSlots = () => {
     {
       startTime: "06:00 AM",
       endTime: "07:00 AM",
-      hour: 6,
+      startHour: 6,
+      endHour: 7,
     },
     {
       startTime: "07:00 AM",
       endTime: "08:00 AM",
-      hour: 7,
+      startHour: 7,
+      endHour: 8,
     },
     {
       startTime: "08:00 AM",
       endTime: "09:00 AM",
-      hour: 8,
+      startHour: 8,
+      endHour: 9,
     },
     {
       startTime: "09:00 AM",
       endTime: "10:00 AM",
-      hour: 9,
+      startHour: 9,
+      endHour: 10,
     },
     {
       startTime: "05:00 PM",
       endTime: "06:00 PM",
-      hour: 17,
+      startHour: 17,
+      endHour: 18,
     },
     {
       startTime: "06:00 PM",
       endTime: "07:00 PM",
-      hour: 18,
+      startHour: 18,
+      endHour: 19,
     },
     {
       startTime: "07:00 PM",
       endTime: "08:00 PM",
-      hour: 19,
+      startHour: 19,
+      endHour: 20,
     },
     {
       startTime: "08:00 PM",
       endTime: "09:00 PM",
-      hour: 20,
+      startHour: 20,
+      endHour: 21,
     },
   ];
 
@@ -68,15 +76,20 @@ const generateSlots = () => {
 
           date: dateKey,
 
-          sport: sport,
+          sport,
 
           startTime: timeSlot.startTime,
 
           endTime: timeSlot.endTime,
 
-          hour: timeSlot.hour,
+          startHour: timeSlot.startHour,
 
-          price: timeSlot.hour >= 17 ? 800 : 600,
+          endHour: timeSlot.endHour,
+
+          price:
+            timeSlot.startHour >= 17
+              ? 800
+              : 600,
 
           status:
             index === 1 || index === 6
