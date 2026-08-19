@@ -11,7 +11,7 @@ import SlotList from "./SlotList";
 
 
 function BookingSection() {
-    const [selectedSport, setSelectedSport] = useState("Cricket");
+    const [selectedSport, setSelectedSport] = useState("");
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedSlot, setSelectedSlot] = useState(null);
     const [customerDetails, setCustomerDetails] = useState(null);
