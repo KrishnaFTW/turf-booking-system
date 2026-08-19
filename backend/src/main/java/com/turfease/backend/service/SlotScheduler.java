@@ -3,25 +3,31 @@ package com.turfease.backend.service;
 import java.time.LocalDate;
 
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class SlotScheduler {
 
     private final SlotGenerationService slotGenerationService;
+    private final BookingService bookingService;
 
     public SlotScheduler(
-            SlotGenerationService slotGenerationService) {
+            SlotGenerationService slotGenerationService,
+            BookingService bookingService) {
 
-        this.slotGenerationService =
-                slotGenerationService;
+        this.slotGenerationService = slotGenerationService;
+        this.bookingService = bookingService;
     }
 
     @Scheduled(
             initialDelay = 10000,
-            fixedRate = 3600000
+            fixedRate = 60000
     )
     public void maintainSlots() {
+
+        System.out.println(
+                "===== SLOT SCHEDULER RUNNING ====="
+        );
 
         LocalDate today = LocalDate.now();
 
@@ -29,5 +35,7 @@ public class SlotScheduler {
                 today,
                 4
         );
+
+        bookingService.releaseExpiredBookings();
     }
 }

@@ -1,15 +1,20 @@
 package com.turfease.backend.controller;
 
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.turfease.backend.entity.Slot;
 import com.turfease.backend.entity.SlotStatus;
 import com.turfease.backend.repository.SlotRepository;
 import com.turfease.backend.service.SlotGenerationService;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/slots")
@@ -106,5 +111,16 @@ public class SlotController {
         return ResponseEntity.ok(
                 "Slots generated successfully for 4 days."
         );
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Slot> getSlotById(
+            @PathVariable Long id) {
+
+        return slotRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(
+                        ResponseEntity.notFound().build()
+                );
     }
 }
