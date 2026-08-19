@@ -81,7 +81,7 @@ public class Booking {
 
         createdAt = LocalDateTime.now();
 
-        expiresAt = createdAt.plusMinutes(1);
+        expiresAt = createdAt.plusMinutes(10);
     }
 
     public Long getId() {
