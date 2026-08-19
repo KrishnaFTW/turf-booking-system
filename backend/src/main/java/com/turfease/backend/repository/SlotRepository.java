@@ -1,6 +1,7 @@
 package com.turfease.backend.repository;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,5 +34,12 @@ public interface SlotRepository extends JpaRepository<Slot, Long> {
             Long sportId,
             LocalDate slotDate,
             SlotStatus status
+    );
+
+    boolean existsByTurfIdAndSportIdAndSlotDateAndStartTime(
+            Long turfId,
+            Long sportId,
+            LocalDate slotDate,
+            LocalTime startTime
     );
 }

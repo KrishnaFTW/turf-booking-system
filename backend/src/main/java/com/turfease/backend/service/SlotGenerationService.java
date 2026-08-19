@@ -1,5 +1,13 @@
 package com.turfease.backend.service;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.turfease.backend.entity.Slot;
 import com.turfease.backend.entity.SlotStatus;
 import com.turfease.backend.entity.Sport;
@@ -7,14 +15,6 @@ import com.turfease.backend.entity.Turf;
 import com.turfease.backend.repository.SlotRepository;
 import com.turfease.backend.repository.SportRepository;
 import com.turfease.backend.repository.TurfRepository;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
 
 @Service
 public class SlotGenerationService {
@@ -47,6 +47,11 @@ public class SlotGenerationService {
                 continue;
             }
 
+            if (turf.getOpeningTime() == null
+                    || turf.getClosingTime() == null) {
+                continue;
+            }
+
             for (Sport sport : sports) {
 
                 if (!sport.isActive()) {
@@ -55,8 +60,8 @@ public class SlotGenerationService {
 
                 for (int day = 0; day < numberOfDays; day++) {
 
-                    LocalDate date =
-                            startDate.plusDays(day);
+                    LocalDate date
+                            = startDate.plusDays(day);
 
                     generateSlotsForDate(
                             turf,
@@ -73,33 +78,28 @@ public class SlotGenerationService {
             Sport sport,
             LocalDate date) {
 
-        LocalTime currentTime =
-                turf.getOpeningTime();
+        LocalTime currentTime
+                = turf.getOpeningTime();
 
-        LocalTime closingTime =
-                turf.getClosingTime();
+        LocalTime closingTime
+                = turf.getClosingTime();
 
         while (currentTime.isBefore(closingTime)) {
 
-            LocalTime endTime =
-                    currentTime.plusHours(1);
+            LocalTime endTime
+                    = currentTime.plusHours(1);
 
             if (endTime.isAfter(closingTime)) {
                 break;
             }
 
-            boolean slotExists =
-                    slotRepository
-                            .findByTurfIdAndSportIdAndSlotDate(
-                                    turf.getId(),
-                                    sport.getId(),
-                                    date
-                            )
-                            .stream()
-                            .anyMatch(slot ->
-                                    slot.getStartTime()
-                                            .equals(currentTime)
-                            );
+            boolean slotExists
+                    = slotRepository.existsByTurfIdAndSportIdAndSlotDateAndStartTime(
+                            turf.getId(),
+                            sport.getId(),
+                            date,
+                            currentTime
+                    );
 
             if (!slotExists) {
 
